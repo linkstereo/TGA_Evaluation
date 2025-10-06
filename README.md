@@ -53,4 +53,6 @@ docker-compose up -d
     - etc.
 - DOCKER
   - The file docker-compose was created carefully in order to avoid timeout errors when spring boot tries to start up and Elasticsearch is still loading
+- POSTMAN
+  - You can find in the root of the project a postman collection file (ElasticSearchAPI.postman_collection.json) for all API Rest Services
 
