@@ -46,7 +46,7 @@ docker-compose up -d
 - ERROR HANDLING
   - Errors are managed by an Advisor object which is configured as we need. In this case, for any Exception we have a clean formated json error with a message
 - TESTING 
-  - There are 2 integration tests, one for each controller. I only mocked the hackerrank server. With Elasticsearch I used a specific test container for these purposes.
+  - There are 1 integration tests all about fetching and filtering movies. I only mocked the hackerrank server. With Elasticsearch I used a specific test container for these purposes.
 - HEALTH
   - Additionally, I configured an Actuator Health check. And therefore all endpoint from that framework:
     - [GET] /actuator/health
