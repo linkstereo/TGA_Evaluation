@@ -1,0 +1,3 @@
+spring:
+  elasticsearch:
+    uris: http://${SPRING_ELASTIC_SEARCH_HOST:localhost}:9200
