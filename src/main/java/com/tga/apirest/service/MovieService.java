@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+import static java.util.Objects.isNull;
 import static org.apache.logging.log4j.util.Strings.isBlank;
 
 @Service
@@ -47,22 +48,27 @@ public class MovieService {
         return result;
     }
 
-    public void fetchMovies(String substr) {
+    public void fetchMovies(String title, Integer requestedPage) {
 
-        log.info("Fetch Movies, [substr: {}]", substr);
+        log.info("Fetch Movies, [title: {}, page: {}]", title, requestedPage);
 
         int totalPages = 1;
         int totalRecords = 0;
-        MovieResponse page1 = hackerRankApiClient.searchMovies(substr, 1);
+        MovieResponse page1 = hackerRankApiClient.searchMovies(title, (isNull(requestedPage)?1:requestedPage));
 
         if (page1 != null && page1.getData() != null && !page1.getData().isEmpty()) {
-            totalPages = page1.getTotalPages();
-            totalRecords = page1.getTotal();
+            if (isNull(requestedPage)) {
+                totalPages = page1.getTotalPages();
+                totalRecords = page1.getTotal();
+            } else {
+                totalRecords = page1.getData().size();
+            }
+
             saveMoviesFromResponse(page1);
         }
 
         for (int page = 2; page <= totalPages; page++) {
-            var pageN = hackerRankApiClient.searchMovies(substr, page);
+            var pageN = hackerRankApiClient.searchMovies(title, page);
             saveMoviesFromResponse(pageN);
         }
 

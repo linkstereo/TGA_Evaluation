@@ -26,8 +26,10 @@ public class MoviesController {
     }
 
     @PutMapping(FETCH_AND_UPDATE_MOVIES)
-    public ResponseEntity fetchMovies(@RequestParam(name = "title", required = false) String title) {
-        movieService.fetchMovies(title);
+    public ResponseEntity fetchMovies(
+            @RequestParam(name = "title", required = false) String title,
+            @RequestParam(name = "page", required = false) Integer page) {
+        movieService.fetchMovies(title, page);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

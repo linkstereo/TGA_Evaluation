@@ -14,9 +14,20 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @AllArgsConstructor
 public class Movie {
 
+    /**
+     * The IMDb ID of the movie.
+     */
     @Id
     private String imdbID;
+
+    /**
+     * The title of the movie.
+     */
     private String title;
+
+    /**
+     * The release year of the movie.
+     */
     private int year;
 
 }
