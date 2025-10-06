@@ -48,9 +48,9 @@ docker-compose up -d
 - TESTING 
   - There are 2 integration tests, one for each controller. I only mocked the hackerrank server. With Elasticsearch I used a specific test container for these purposes.
 - HEALTH
-  - Additionally I configured an Actuator Health check. And therefore all endpoint from that framework:
+  - Additionally, I configured an Actuator Health check. And therefore all endpoint from that framework:
     - [GET] /actuator/health
     - etc.
 - DOCKER
-  - The file docker-compose was created carefully in order to avoid timeout error when spring tries to start and Elasticsearch is still loading
+  - The file docker-compose was created carefully in order to avoid timeout errors when spring boot tries to start up and Elasticsearch is still loading
 
